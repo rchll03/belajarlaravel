@@ -1,6 +1,6 @@
 <x-layout>
     <h1>List Fakultas</h1>
-  <table>
+  <table class="table">
     <thead>
         <tr>
             <th>no</th>
@@ -17,6 +17,9 @@
             <td>{{$item->nama_dekan}}</td>
             <td>
                 <a href="/fakultas/{{ $item->id }}/edit" class="btn btn-warning">EDIT</a>
+
+                <a href="/fakultas/{{ $item->id }}">Detail</a>
+
                 <form action="/fakultas/{{ $item->id }}" method="post">
                     @csrf
                     @method("DELETE")

@@ -43,9 +43,13 @@ class FakultasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fakultas $fakultas)
+    public function show(Fakultas $fakulta)
     {
-        return view('fakultas.detail-fakultas');
+        return view('fakultas.detail-fakultas', [
+            'fakulta' => $fakulta
+        ]);
+
+
     }
 
     /**
@@ -61,9 +65,16 @@ class FakultasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, Fakultas $fakulta)
     {
-        //
+        Fakultas::create([
+            'nama_fakultas' => $request-> nama_fakultas,
+            'nama_dekan' => $request-> nama_dekan
+        ]);
+
+
+    return redirect('/fakultas');
+
     }
 
     /**
@@ -71,7 +82,7 @@ class FakultasController extends Controller
      */
     public function destroy(Fakultas $fakulta)
     {
-        $fakulta->delete();
+        $fakulta->delete(0);
 
         return redirect()->back();
     }
